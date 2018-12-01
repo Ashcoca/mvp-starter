@@ -1,0 +1,40 @@
+.player-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 60%;
+    height: 250px;
+    position:relative;
+}
+
+.player-box {
+    counter-increment: list;
+    margin: 0 3px 3px 3px;
+    padding: 0.4em;
+    padding-left: 1.5em;
+    padding-bottom: 0.6em;
+    font-size: 1.7em;
+    height: 20px;
+    /* font-family: 'NFL'; */
+    background-color: lightgrey;
+    border-left: 6px solid red;
+    width: 300px;
+    cursor: pointer;
+    position: relative;
+}
+
+.player-box:before {
+    color: #e75204;
+    content: counter(list) ". ";
+    left: -32px;
+    position: absolute;
+    margin: 0 3px 3px 3px;
+    padding-left: 1.2em;
+    text-align: right;
+    width: 26px;
+   }
+  
+.player-box:hover {
+    border-color:#7a7a7a;
+    
+}

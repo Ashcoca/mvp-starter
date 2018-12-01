@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS test;
+DROP DATABASE IF EXISTS rankings;
 
-CREATE DATABASE test;
+CREATE DATABASE rankings;
 
-USE test;
+USE rankings;
 
 CREATE TABLE items (
   id int NOT NULL AUTO_INCREMENT,

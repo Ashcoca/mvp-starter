@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js"
+    "react": "webpack -d --watch",
+    "start": "nodemon server/server.js"
   },
-  "author": "Beth Johnson",
+  "author": "Ash Coca",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -17,7 +17,6 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "angular": "^1.6.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
