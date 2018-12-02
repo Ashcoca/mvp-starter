@@ -1,10 +1,9 @@
 import React from 'react';
 
-const ReceiverList = (props) => (
+const QBList = (props) => (
   <li className="player-box">
     { props.item.firstName + " " + props.item.lastName }
-    {/* <span className="hidden">{props.item}</span> */}
   </li>
 )
 
-export default ReceiverList;
+export default QBList;

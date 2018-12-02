@@ -1,9 +1,10 @@
+
+
 .player-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 60%;
-    height: 250px;
     position:relative;
 }
 
@@ -15,7 +16,7 @@
     padding-bottom: 0.6em;
     font-size: 1.7em;
     height: 20px;
-    /* font-family: 'NFL'; */
+    font-family: 'Alegreya Sans SC', sans-serif;
     background-color: lightgrey;
     border-left: 6px solid red;
     width: 300px;
@@ -25,7 +26,7 @@
 
 .player-box:before {
     color: #e75204;
-    content: counter(list) ". ";
+    content: counter(list) ".  ";
     left: -32px;
     position: absolute;
     margin: 0 3px 3px 3px;
@@ -36,5 +37,61 @@
   
 .player-box:hover {
     border-color:#7a7a7a;
-    
+}
+
+
+/* Divs to create columns */
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 800px) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
