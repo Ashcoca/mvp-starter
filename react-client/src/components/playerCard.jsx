@@ -2,29 +2,43 @@ import React from 'react';
 
 
 class Modal extends React.Component {
+
+  //   let team = data[0];
+  //   let opponent = data[1];
+  //   let rank = data[2];
+  //   let id = data[3];
+  //   let position = data[4];
+
   render () {
     const { isOpen } = this.props;
- 
+    if (this.props.items) {
+      let data = this.props.items.querySelector('div').innerText.split('|');
+      console.log(data)
+      return (
+        <div className={isOpen ? 'modal' : 'hidden'}>
+          <div className="modal-content">
+            <div className="modal-header">
+              <span className="close" onClick={this.props.onClose}>&times;</span>
+              <h2>{this.props.items.innerText}</h2>
+            </div>
+            <div className="modal-body">
+              <p>Plays {data[4]} for {data[0]}</p>
+              <p>Upcoming opponent: {data[1]}</p>
+            </div>
+            <div className="modal-footer">
+              <h3> <a href={`http://www.nfl.com/player/${this.props.items.innerText.replace(/\s/g, '').toLowerCase()}/${data[3]}/profile`}>View Complete Player Info on NFL.com</a></h3>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div className={isOpen ? 'modal' : 'hidden'}>
-         <div className="modal-content">
-           <div className="modal-header">
-             <span className="close" onClick={this.props.onClose}>&times;</span>
-             <h2>Modal Header</h2>
-           </div>
-           <div className="modal-body">
-             <p>Some text in the Modal Body</p>
-             <p>Some other text...</p>
-           </div>
-           <div className="modal-footer">
-             <h3>Modal Footer</h3>
-           </div>
-         </div>
+      <div>
+        <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>      
       </div>
-    );
+    ) 
   }
 }
-
 
 // const container = document.createElement('div');
 // document.body.appendChild(container);

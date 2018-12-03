@@ -10,11 +10,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      rb: [],
-      qb: [],
-      wr: [],
+        rb: [],
+        qb: [],
+        wr: [],
+        k: [],
+        def: [],
       isLoading: true,
       isModalOpen: false,
+      selectedItem: null,
       error: null,
     }
     this.toggleModal = this.toggleModal.bind(this);
@@ -56,22 +59,16 @@ class App extends React.Component {
     );  
   }
 
-
-  // toggleModal(e) {
-  //   var newState = this.state;
-	// 	newState.modalIsOpen= !this.state.modalIsOpen;
-  //   this.setState(newState);
-  //   console.log(e.target)
-  // }
-
-  toggleModal() {
+  toggleModal(selectedItem) {
     if (this.state.isModalOpen === false) {
-      this.setState({ isModalOpen: true })
+      this.setState({
+         isModalOpen: true, 
+         selectedItem: selectedItem.target
+        })
     } else {
       this.setState({ isModalOpen: false })
     }
   }
-
 
   render () {
     if (this.state.wr.length > 0 && this.state.rb.length > 0 && this.state.qb.length > 0) {
@@ -87,7 +84,7 @@ class App extends React.Component {
         <div className="column"  onClick={this.toggleModal}>
           <Receivers items={this.state.wr}/>
         </div>
-        <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal}/>
+        <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
       </div>
       )
     }
