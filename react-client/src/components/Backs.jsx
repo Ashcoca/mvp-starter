@@ -2,11 +2,15 @@ import React from 'react';
 import BacksList from './BacksList.jsx';
 
 const Backs = (props) => (
-  <ol className="player-list">
-    <h4> Running Backs </h4>
-    { props.items[0].map(item => <BacksList item={item}/>)}
-  </ol>
-
+  <div>
+    <div className="input-container">
+      <input type="text" placeholder="Player Name"></input>
+      <button className="add-player">Add Running Back</button>
+    </div>
+    <ol className="player-list">
+      { props.items[0].map(item => <BacksList item={item}/>)}
+    </ol>
+  </div>
 )
 
 export default Backs;
