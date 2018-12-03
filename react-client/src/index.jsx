@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Receivers from './components/Receivers.jsx';
 import Backs from './components/Backs.jsx';
 import QB from './components/QB.jsx';
+import Modal from './components/playerCard.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,14 +14,15 @@ class App extends React.Component {
       qb: [],
       wr: [],
       isLoading: true,
-      modalIsOpen: false,
+      isModalOpen: false,
       error: null,
     }
-    this.toggleModal = this.toggleModal.bind(this)
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://api.fantasy.nfl.com/v1/players/editorweekranks?&position=WR&count=75&format=json')
+
+    fetch('/receivers')
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -28,9 +30,10 @@ class App extends React.Component {
         isLoading: false
       })
     })
-    .catch(error => this.setState({ error, isLoading: false }));
+    .catch(error => this.setState({ error, isLoading: false })
+    );
 
-    fetch('http://api.fantasy.nfl.com/v1/players/editorweekranks?&position=RB&count=50&format=json')
+    fetch('/backs')
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -38,9 +41,10 @@ class App extends React.Component {
         isLoading: false
       })
     })
-    .catch(error => this.setState({ error, isLoading: false }));
+    .catch(error => this.setState({ error, isLoading: false })
+    );
 
-    fetch('http://api.fantasy.nfl.com/v1/players/editorweekranks?&position=QB&count=35&format=json')
+    fetch('/quarterbacks')
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -48,37 +52,44 @@ class App extends React.Component {
         isLoading: false
       })
     })
-    .catch(error => this.setState({ error, isLoading: false }));
+    .catch(error => this.setState({ error, isLoading: false })
+    );  
   }
 
-  // test(e) {
-  //   console.log(e.target.innerText);
+
+  // toggleModal(e) {
+  //   var newState = this.state;
+	// 	newState.modalIsOpen= !this.state.modalIsOpen;
+  //   this.setState(newState);
+  //   console.log(e.target)
   // }
 
-  toggleModal(e) {
-    var newState = this.state;
-		newState.modalIsOpen= !this.state.modalIsOpen;
-    this.setState(newState);
-    console.log(e.target)
-    
+  toggleModal() {
+    if (this.state.isModalOpen === false) {
+      this.setState({ isModalOpen: true })
+    } else {
+      this.setState({ isModalOpen: false })
+    }
   }
+
 
   render () {
     if (this.state.wr.length > 0 && this.state.rb.length > 0 && this.state.qb.length > 0) {
-    return (
-    <div>
-      <h1>NFL Fantasy Rankings</h1>
-      <div className="column"  onClick={this.toggleModal}>
-        <Receivers items={this.state.wr}/>
+      return (
+      <div>
+        <h1>NFL Fantasy Rankings</h1>
+        <div className="column" onClick={this.toggleModal}>
+          <QB items={this.state.qb}/>
+        </div>
+        <div className="column" onClick={this.toggleModal}>
+          <Backs items={this.state.rb}/>
+        </div>
+        <div className="column"  onClick={this.toggleModal}>
+          <Receivers items={this.state.wr}/>
+        </div>
+        <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal}/>
       </div>
-      <div className="column" onClick={this.toggleModal}>
-        <Backs items={this.state.rb}/>
-      </div>
-      <div className="column" onClick={this.toggleModal}>
-        <QB items={this.state.qb}/>
-      </div>
-    </div>
-    )
+      )
     }
     return (
     <div>
