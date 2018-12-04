@@ -366,9 +366,10 @@ ol i {
     margin: 1em;
     margin-right: -4.5em;
     background: #fff;
-    color: #6A5D4F;
+    color: black;
     font-size: 1em;
     font-weight: 600;
+    font-family: 'Alegreya Sans SC', sans-serif;
     padding: 0px;
     border: 0;
     border-radius: 5px;
