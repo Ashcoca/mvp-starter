@@ -16,12 +16,11 @@ class App extends React.Component {
       k: [],
       def: [],
       current: [],
-      search: '',
-      isActive: false,
+      searchResults: [],
+      view: 'home',
       isLoading: true,
       isModalOpen: false,
       selectedItem: null,
-      view: 'home',
       error: null,
     }
     this.toggleModal = this.toggleModal.bind(this);
@@ -109,8 +108,8 @@ class App extends React.Component {
   setView() {
     this.setState({
       view: 'home'
-    })
-  }
+    });
+  };
   
   // handleDelete(id) {
   //   const newState = this.state;
@@ -124,16 +123,16 @@ class App extends React.Component {
   
   onInputChange(event) {
     let query = event.target.value;
-    this.setState({
-      search: query
+    let searchResults = this.state.current;
+    searchResults = searchResults.filter((player) => {
+      let playerName = player.firstName.toLowerCase() + player.lastName.toLowerCase()
+      return playerName.indexOf(
+        query.toLowerCase()) !== -1
     })
-    let results = this.state.current.filter((data)=>{
-        return data.firstName.includes(query);
+    this.setState({
+      current: searchResults
     });
-      this.setState({
-        current: results
-    });
-  }
+  };
 
 
   render() {
@@ -159,16 +158,16 @@ class App extends React.Component {
           <div className='button-container'>
             <p className="home-text">Select a position to start creating your own rankings:</p>
             <br/>
-            <button  className = 'big-button animated pulse' name="QB" onClick={this.toggleView}>QB</button>
-            <button  className = 'big-button animated pulse' name="WR" onClick={this.toggleView}>WR</button>
-            <button  className = 'big-button animated pulse' name="RB" onClick={this.toggleView}>RB</button>
-            <button  className = 'big-button animated pulse' name="K" onClick={this.toggleView}>K</button>
-            <button  className = 'big-button animated pulse' name="DEF" onClick={this.toggleView}>DEF</button>
+            <button className = 'big-button animated pulse' name="QB" onClick={this.toggleView}>QB</button>
+            <button className = 'big-button animated pulse' name="WR" onClick={this.toggleView}>WR</button>
+            <button className = 'big-button animated pulse' name="RB" onClick={this.toggleView}>RB</button>
+            <button className = 'big-button animated pulse' name="K" onClick={this.toggleView}>K</button>
+            <button className = 'big-button animated pulse' name="DEF" onClick={this.toggleView}>DEF</button>
           </div>
         </div>
-      )
-    }
-  }
-}
+      );
+    };
+  };
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));

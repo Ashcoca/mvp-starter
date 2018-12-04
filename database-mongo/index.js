@@ -18,7 +18,7 @@ var itemSchema = mongoose.Schema({
 
 var Item = mongoose.model('Item', itemSchema);
 
-var selectAll = function(callback) {
+var saveList = function(callback) {
   Item.find({}, function(err, items) {
     if(err) {
       callback(err, null);
@@ -28,4 +28,4 @@ var selectAll = function(callback) {
   });
 };
 
-module.exports.selectAll = selectAll;
+module.exports.saveList = saveList;

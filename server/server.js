@@ -1,10 +1,9 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const fetch = require("node-fetch");
 
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
+
+const db = require('../database-mongo');
 const port = 3000;
 
 
