@@ -63,6 +63,7 @@ class App extends React.Component {
   }
 
   toggleModal(selectedItem) {
+    console.log("hello")
     if (this.state.isModalOpen === false) {
       this.setState({
          isModalOpen: true, 
@@ -90,7 +91,7 @@ class App extends React.Component {
     if (this.state.view === 'WR') {
       return (
       <div className="column">
-        <button onClick={this.setView}>Back</button>
+        <button className="back-button animated pulse" onClick={this.setView}>Back</button>
         <Receivers items={this.state.wr} onClick={this.toggleModal}/>
         <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
       </div>
@@ -98,7 +99,7 @@ class App extends React.Component {
     } else if (this.state.view === 'RB') {
       return (
       <div className="column">
-        <button onClick={this.setView}>Back</button>
+        <button className="back-button animated pulse" onClick={this.setView}>Back</button>
         <Backs items={this.state.rb} onClick={this.toggleModal}/>
         <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
       </div>
@@ -106,19 +107,24 @@ class App extends React.Component {
     } else if (this.state.view === 'QB') {
       return (
         <div className="column">
-          <button onClick={this.setView}>Back</button>
+          <img src={"https://s3-us-west-1.amazonaws.com/fantasyash/qb2.png"}/>
+          <br/>
+          <button className="back-button animated pulse" onClick={this.setView}>Back</button>
           <QB items={this.state.qb} onClick={this.toggleModal}/>
           <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
         </div>
       )
     } else if (this.state.view === 'home') {
       return (
-        <div className='button-container'>
-          Select a position to rank:
+        <div>
+          <img id="logo" src={"https://s3-us-west-1.amazonaws.com/fantasyash/logo.png"}/>
+          <div className='button-container'>
+          Select a position to start creating your own rankings:
           <br/>
-          <button  className = 'big-button' name="WR" onClick={this.toggleView}>WR</button>
-          <button  className = 'big-button' name="QB" onClick={this.toggleView}>QB</button>
-          <button  className = 'big-button' name="RB" onClick={this.toggleView}>RB</button>
+          <button  className = 'big-button animated pulse' name="WR" onClick={this.toggleView}>WR</button>
+          <button  className = 'big-button animated pulse' name="QB" onClick={this.toggleView}>QB</button>
+          <button  className = 'big-button animated pulse' name="RB" onClick={this.toggleView}>RB</button>
+          </div>
         </div>
       )
     } else {

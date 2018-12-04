@@ -1,11 +1,30 @@
 
+#logo {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    bottom:0px;
+    text-align: center;
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 1s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
 
 .player-list {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 60%;
-    position:relative;
+    max-width: 500px;
+    position: relative;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 40px;
+    top: 0px;
+    bottom:0px;
+    text-align: center;
+    list-style-position: inside;
+
 }
 
 .player-box {
@@ -43,21 +62,11 @@
 
 /* Divs to create columns */
 .column {
-    float: left;
-    width: 33.33%;
+    text-align: center;
 }
 
 /* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-@media screen and (max-width: 800px) {
-    .column {
-        width: 100%;
-    }
-}
+
 
 
 
@@ -203,6 +212,25 @@
     margin: 5px;
 }
     .big-button:hover {
+    border-color:#7a7a7a;
+    }
+
+
+.back-button {
+    display: inline-block;
+    background-color: #CCCCCC;
+    border: 0.20em solid #CCCCCC;
+    box-sizing: border-box;
+    font-family: 'Segoe UI','Roboto',sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    padding: 25px;
+    border-radius: 75%;
+    margin: 5px;
+}
+    .back-button:hover {
     border-color:#7a7a7a;
     }
 
