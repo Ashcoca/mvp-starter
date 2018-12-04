@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Players from './components/Players.jsx';
 import Modal from './components/playerCard.jsx';
-import Draggable from './components/Dragger.jsx'
 import Search from './components/Search.jsx';
 
 class App extends React.Component {
@@ -113,21 +112,18 @@ class App extends React.Component {
   };
   
   handleDelete(event) {
-    console.log(event.target.parentElement)
-    let target = event.currentTarget.parentElement;
-    console.log(target.innerText.slice(0, -1))
-
-    let searchResults = this.state.current;
-    searchResults.filter((player) => {
-      let playerName = player.firstName.toLowerCase() + player.lastName.toLowerCase()
-      let getIndex = playerName.indexOf(
-        target.innerText.slice(0, -1).replace(/\s/g, '').toLowerCase())
-      return searchResults.splice(getIndex, 1)
-    })
+    let target = event.currentTarget.parentElement.querySelector('div').innerText.split('|')[3];
+    let newState = this.state.current;
+    for (var i = 0; i < this.state.current.length; i++) {
+      if (this.state.current[i].id === target) {
+        console.log(this.state.current[i].id, target, "Successfully deleted!")
+        return newState.splice([i], 1)
+      }
+    }
     this.setState({
-      current: searchResults
+      current: newState
     });
-  }
+  };
   
   onInputChange(event) {
     let query = event.target.value;
@@ -143,8 +139,40 @@ class App extends React.Component {
   };
 
   logIn() {
-    fetch('/login')
-  }
+    let username = prompt("Enter your username : ", "Username");
+    let password = prompt("Enter your password :", "Password")
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      headers: {  
+        'auth': '1234'  
+      }, 
+      data: {
+        user: username,
+        pass: password
+      },
+    }).done((data) => {
+      console.log(data)
+    })
+  };
+
+
+  //   fetch('/login', {  
+  //     method: 'POST',  
+  //     headers: {  
+  //       'auth': '1234'  
+  //     }, 
+  //     body: JSON.stringify({
+  //     name: username,
+  //     pass: password 
+  //   })
+  // })
+  // .then((data) => {  
+  //   console.log('Request success: ', data);  
+  // })  
+  // .catch((error) => {  
+  //   console.log('Request failure: ', error);  
+  // });
 
 
   render() {

@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const fetch = require("node-fetch");
 
 
+
 const db = require('../database-mongo');
 const port = 3000;
-
+const checkAuth = require('./serverModels.js');
 
 var app = express();
 
@@ -59,13 +60,28 @@ app.get('/defense', function (req, res) {
   .catch(error => {console.log(error)});
 });
 
-app.post('/login', function (req, res, next) {
-  app.post('/login',function(req,res){
-    var user_name=req.body.user;
-    var password=req.body.password;
-    console.log("User name = "+user_name+", password is "+password);
-    res.end("yes");
-  });
+// app.post('/login', function (req, res, next) {
+//   var username = req.body.username;
+//   var password = req.body.password;
+//   checkAuth(username, password);
+
+//   console.log("User name = "+user_name+", password is "+password);
+//   res.end("yes");
+// });
+
+app.post('/login', function (req, res) {
+  console.log(req.body, "hello")
+  var post = req.body;
+  if (post.user === 'ash' && post.pass === 'ashvin') {
+    req.session.user_id = req.body.user;
+    res.redirect('/logged_in_test');
+  } else {
+    res.send('Bad username or password');
+  }
+});
+
+app.get('/logged_in_test', checkAuth, function (req, res) {
+  res.send('if you are viewing this page it means you are logged in');
 });
 
 app.post('/save', function (req, res) {
