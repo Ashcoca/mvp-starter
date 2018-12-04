@@ -13,13 +13,12 @@ class Modal extends React.Component {
     const { isOpen } = this.props;
     if (this.props.items) {
       let data = this.props.items.querySelector('div').innerText.split('|');
-      console.log(data)
       return (
         <div className={isOpen ? 'modal' : 'hidden'}>
           <div className="modal-content">
             <div className="modal-header">
               <span className="close" onClick={this.props.onClose}>&times;</span>
-              <h2>{this.props.items.innerText}</h2>
+              <h2>{this.props.items.innerText.slice(0, -1)}</h2>
             </div>
             <div className="modal-body">
               <p>Plays {data[4]} for {data[0]}</p>
