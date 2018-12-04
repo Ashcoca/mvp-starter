@@ -27,6 +27,7 @@ class App extends React.Component {
     this.toggleView = this.toggleView.bind(this);
     this.setView = this.setView.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -111,15 +112,19 @@ class App extends React.Component {
     });
   };
   
-  // handleDelete(id) {
-  //   const newState = this.state;
-  //   const index = newState.players.findIndex(a => a.id === id);
-
-  //   if (index === -1) return;
-  //   newState.players.splice(index, 1);
-
-  //   this.setState(newState); // This will update the state and trigger a rerender of the components
-  // }
+  handleDelete(event) {
+    console.log(event.target)
+    // let target = event.target.value;
+    // let searchResults = this.state.current;
+    // searchResults = searchResults.filter((player) => {
+    //   let playerName = player.firstName.toLowerCase() + player.lastName.toLowerCase()
+    //   delete playerName.indexOf(
+    //     target.toLowerCase()) !== -1
+    // })
+    // this.setState({
+    //   current: searchResults
+    // });
+  }
   
   onInputChange(event) {
     let query = event.target.value;
@@ -144,13 +149,13 @@ class App extends React.Component {
           <button className="hover-button animated pulse">Save</button>
           <button className="hover-button animated pulse" onClick={this.setView}>Back</button>
           <button className="button animated pulse">
-          <span style={{fontSize:'3em'}}>
-            <i className="fas fa-search"></i>
-          </span>
+            <span style={{fontSize:'3em'}}>
+              <i className="fas fa-search"></i>
+            </span>
             <Search items={this.state.current} onInputChange={this.onInputChange}/>
           </button>
         </div>        
-        <Players items={this.state.current} onClick={this.toggleModal}/>
+        <Players items={this.state.current} onClick={this.toggleModal} handleDelete={this.handleDelete}/>
         <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
       </div>
       )

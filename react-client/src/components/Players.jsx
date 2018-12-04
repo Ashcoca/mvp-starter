@@ -24,7 +24,7 @@ const Players = (props) => (
       <br/>
     </div>
     <ol className="player-list">
-      { props.items.map(item => <PlayerList item={item} onClick={props.onClick}/>)}
+      { props.items.map(item => <PlayerList item={item} onClick={props.onClick} handleDelete={props.handleDelete}/>)}
     </ol>
   </div>
 )
