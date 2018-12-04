@@ -11,7 +11,7 @@ class Modal extends React.Component {
 
   render () {
     const { isOpen } = this.props;
-    if (this.props.items) {
+    if (this.props.items && (this.props.items.querySelector('div'))) {
       let data = this.props.items.querySelector('div').innerText.split('|');
       return (
         <div className={isOpen ? 'modal' : 'hidden'}>

@@ -11,7 +11,7 @@ Features include:
 - [x] - Direct links to NFL.com for any listed player
 - [x] - Connects to NFL.com API to get the latest editor rankings
 - [x] - Searchable lists make it easy to find a player
-- More Features Coming Soon! - 
+- More Features Coming Soon!
 - [ ] - Create your own custom lists from scratch!
 - [ ] - Share and view and comment on other user's rankings
 - [ ] - Secure authentication means your data is safe

@@ -46,7 +46,7 @@ class PlayerList extends React.Component {
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={this.dragStart.bind(this)}>
           { this.props.item.firstName + " " + this.props.item.lastName }
-          <i className="js-remove">✖</i>
+          <i className="js-remove" onClick={this.props.handleDelete}>✖</i>
           <div className="hidden">{this.props.item.teamAbbr}|{this.props.item.opponentTeamAbbr}|{this.props.item.rank}|{this.props.item.id}|{this.props.item.position}</div>
       </li>
     )
