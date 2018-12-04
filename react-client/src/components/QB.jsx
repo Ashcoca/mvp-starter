@@ -8,7 +8,7 @@ const Quarterbacks = (props) => (
       <button className="add-player">Add Quarterbacks</button>
     </div>
     <ol className="player-list">
-      { props.items[0].map(item => <QBList item={item}/>)}
+      { props.items[0].map(item => <QBList item={item} onClick={props.onClick}/>)}
     </ol>
   </div>
 )

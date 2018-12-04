@@ -210,6 +210,7 @@
     padding: 25px;
     border-radius: 50%;
     margin: 5px;
+    width: 100px;
 }
     .big-button:hover {
     border-color:#7a7a7a;
@@ -244,7 +245,14 @@ input {
 }
 
 
-
+.home-text {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 2s;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+}
 
 
 

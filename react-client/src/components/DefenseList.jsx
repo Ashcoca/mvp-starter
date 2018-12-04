@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BacksList = (props) => (
+const DefenseList = (props) => (
     <li className="player-box animated fadeInDown" onClick = {props.onClick}>
       { props.item.firstName + " " + props.item.lastName }
       <div className="hidden">{props.item.teamAbbr}|{props.item.opponentTeamAbbr}|{props.item.rank}|{props.item.id}|{props.item.position}</div>
@@ -8,4 +8,4 @@ const BacksList = (props) => (
   )
 
 
-export default BacksList;
+export default DefenseList;

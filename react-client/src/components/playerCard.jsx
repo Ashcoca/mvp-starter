@@ -26,7 +26,7 @@ class Modal extends React.Component {
               <p>Upcoming opponent: {data[1]}</p>
             </div>
             <div className="modal-footer">
-              <h3> <a href={`http://www.nfl.com/player/${this.props.items.innerText.replace(/\s/g, '').toLowerCase()}/${data[3]}/profile`}>View Complete Player Info on NFL.com</a></h3>
+              <h3> <a href={`http://www.nfl.com/player/${this.props.items.innerText.replace(/\s/g, '').toLowerCase()}/${data[3]}/profile`} target="_blank">View Complete Player Info on NFL.com</a></h3>
             </div>
           </div>
         </div>
