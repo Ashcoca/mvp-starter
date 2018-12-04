@@ -59,9 +59,20 @@ app.get('/defense', function (req, res) {
   .catch(error => {console.log(error)});
 });
 
+app.post('/login', function (req, res, next) {
+  app.post('/login',function(req,res){
+    var user_name=req.body.user;
+    var password=req.body.password;
+    console.log("User name = "+user_name+", password is "+password);
+    res.end("yes");
+  });
+});
+
 app.post('/save', function (req, res) {
 
 });
+
+
 
 app.listen(3000, function() {
   console.log(`listening on port ${port}!`);

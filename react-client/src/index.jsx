@@ -113,17 +113,20 @@ class App extends React.Component {
   };
   
   handleDelete(event) {
-    console.log(event.target)
-    // let target = event.target.value;
-    // let searchResults = this.state.current;
-    // searchResults = searchResults.filter((player) => {
-    //   let playerName = player.firstName.toLowerCase() + player.lastName.toLowerCase()
-    //   delete playerName.indexOf(
-    //     target.toLowerCase()) !== -1
-    // })
-    // this.setState({
-    //   current: searchResults
-    // });
+    console.log(event.target.parentElement)
+    let target = event.currentTarget.parentElement;
+    console.log(target.innerText.slice(0, -1))
+
+    let searchResults = this.state.current;
+    searchResults.filter((player) => {
+      let playerName = player.firstName.toLowerCase() + player.lastName.toLowerCase()
+      let getIndex = playerName.indexOf(
+        target.innerText.slice(0, -1).replace(/\s/g, '').toLowerCase())
+      return searchResults.splice(getIndex, 1)
+    })
+    this.setState({
+      current: searchResults
+    });
   }
   
   onInputChange(event) {
@@ -139,13 +142,17 @@ class App extends React.Component {
     });
   };
 
+  logIn() {
+    fetch('/login')
+  }
+
 
   render() {
     if (this.state.view !== 'home') {
       return (
       <div className="column animated fadeIn">
         <div className="hover-box animated slideInLeft">
-          <button className="hover-button animated pulse">Log In</button>
+          <button className="hover-button animated pulse" onClick={this.logIn}>Log In</button>
           <button className="hover-button animated pulse">Save</button>
           <button className="hover-button animated pulse" onClick={this.setView}>Back</button>
           <button className="button animated pulse">
