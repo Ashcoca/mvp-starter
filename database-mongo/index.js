@@ -12,8 +12,8 @@ db.once('open', function() {
 });
 
 var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+  user_id: Number,
+  list: [String]
 });
 
 var Item = mongoose.model('Item', itemSchema);

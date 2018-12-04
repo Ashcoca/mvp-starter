@@ -7,10 +7,27 @@
     top: 0px;
     bottom:0px;
     text-align: center;
-    -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 1s;
-    animation-name: fadeIn;
-    animation-duration: 1s;
+}
+
+.player-img {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0px;
+    bottom:0px;
+    text-align: center;
+    right: 50px;
+    max-height: 300px;
+    object-fit: cover;
+
+}
+
+/*CSS to allow for image resizing on smaller windows */
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }
 
 .player-list {
@@ -59,6 +76,23 @@
     border-color:#7a7a7a;
 }
 
+ol i {
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+    opacity: 0;
+    display: block;
+    cursor: pointer;
+    color: #c00;
+    top: 3px;
+    right: 10px;
+    position: absolute;
+    font-style: normal;
+  }
+ 
+  ol li:hover i {
+    opacity: 1;
+ 
+  }
 
 /* Divs to create columns */
 .column {
@@ -111,7 +145,7 @@
     padding: 0;
     font-family: 'Alegreya Sans SC', sans-serif;
     border: 1px solid #888;
-    width: 33%;
+    width: 25%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
@@ -199,8 +233,9 @@
 
 .big-button {
     display: inline-block;
-    background-color: #CCCCCC;
-    border: 0.20em solid #CCCCCC;
+    background-color: #ffffff;
+    border: 0.05em solid #ffffff;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.05);
     box-sizing: border-box;
     font-family: 'Segoe UI','Roboto',sans-serif;
     font-weight: 400;
@@ -213,27 +248,53 @@
     width: 100px;
 }
     .big-button:hover {
-    border-color:#7a7a7a;
+    -webkit-box-shadow: 3px 4px 23px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 4px 23px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 4px 23px 0px rgba(0,0,0,0.75);
+    transition-duration: 0.5s;
     }
 
+.hover-box {
+    border: 1px solid rgba(0,0,0,.1);
+    width: 150px;
+    max-width: 150px;
+    height: 250px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: white;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.05);
+    float:left;
+    top: 30%;
+    position: sticky;
+}
+@media only screen and (max-width: 600px) {
+    .hover-box {
+        display: none;
+    }
+}
 
-.back-button {
+.hover-button {
     display: inline-block;
-    background-color: #CCCCCC;
-    border: 0.20em solid #CCCCCC;
+    background-color: #ffffff;
+    border: 0.05em solid #ffffff;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.05);
     box-sizing: border-box;
     font-family: 'Segoe UI','Roboto',sans-serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 15px;
     color: #000000;
     text-align: center;
-    padding: 25px;
-    border-radius: 75%;
     margin: 5px;
+    padding: 5px;
+    width: 125px;
 }
-    .back-button:hover {
+    .hover-button:hover {
     border-color:#7a7a7a;
+    border: 0.05em solid #7a7a7a;
+    transition-duration: 0.3s;
+
     }
+
 
 /* Text fields */
 input {
@@ -249,9 +310,9 @@ input {
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 20px;
     -webkit-animation-name: fadeIn; /* Fade in the background */
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 2.5s;
     animation-name: fadeIn;
-    animation-duration: 2s;
+    animation-duration: 2.5s;
 }
 
 

@@ -1,15 +1,18 @@
 import React from 'react';
 import ReceiverList from './ReceiverList.jsx';
+import Search from './Search.jsx';
+
+
 
 const Receivers = (props) => (
   <div>
-    {console.log(props)}
     <div className="input-container">
-      <input type="text" placeholder="Player Name"></input>
-      <button className="add-player">Add Wide Receivers</button>
+      <img className="player-img" src={"https://s3-us-west-1.amazonaws.com/fantasyash/wr3.png"}/>
+      <br/>
+      <Search />
     </div>
     <ol className="player-list">
-      { props.items[0].map(item => <ReceiverList item={item} onClick={props.onClick}/>)}
+      { props.items[0].map(item => <ReceiverList item={item} onClick={props.onClick} handleDelete={props.handleDelete}/>)}
     </ol>
   </div>
 )
