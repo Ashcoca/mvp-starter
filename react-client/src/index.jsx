@@ -138,15 +138,22 @@ class App extends React.Component {
   };
 
   logIn() {
-    fetch('/login')
-    .then(response => response.json())
-    .then(data => {
-
-    })
     let username = prompt("Enter your username : ", "Username");
     let password = prompt("Enter your password :", "Password")
-
-  }
+    fetch('/login', {  
+      method: 'POST',  
+      body: JSON.stringify({
+      username: username,
+      password: password 
+    })
+  })
+  .then((data) => {  
+    console.log('Request success: ', data);  
+  })  
+  .catch((error) => {  
+    console.log('Request failure: ', error);  
+  });
+}
 
 
   render() {
