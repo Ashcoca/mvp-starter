@@ -18,9 +18,12 @@ class App extends React.Component {
       isLoading: true,
       isModalOpen: false,
       selectedItem: null,
+      view: 'home',
       error: null,
     }
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleView = this.toggleView.bind(this);
+    this.setView = this.setView.bind(this)
   }
 
   componentDidMount() {
@@ -70,29 +73,61 @@ class App extends React.Component {
     }
   }
 
-  render () {
-    if (this.state.wr.length > 0 && this.state.rb.length > 0 && this.state.qb.length > 0) {
+  toggleView(e) {
+    console.log(e.target.name)
+    this.setState({
+      view: e.target.name
+    })
+  }
+
+  setView() {
+    this.setState({
+      view: 'home'
+    })
+  }
+
+  render() {
+    if (this.state.view === 'WR') {
       return (
-      <div>
-        <h1>NFL Fantasy Rankings</h1>
-        <div className="column" onClick={this.toggleModal}>
-          <QB items={this.state.qb}/>
-        </div>
-        <div className="column" onClick={this.toggleModal}>
-          <Backs items={this.state.rb}/>
-        </div>
-        <div className="column"  onClick={this.toggleModal}>
-          <Receivers items={this.state.wr}/>
-        </div>
+      <div className="column">
+        <button onClick={this.setView}>Back</button>
+        <Receivers items={this.state.wr} onClick={this.toggleModal}/>
         <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
       </div>
       )
+    } else if (this.state.view === 'RB') {
+      return (
+      <div className="column">
+        <button onClick={this.setView}>Back</button>
+        <Backs items={this.state.rb} onClick={this.toggleModal}/>
+        <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
+      </div>
+      )
+    } else if (this.state.view === 'QB') {
+      return (
+        <div className="column">
+          <button onClick={this.setView}>Back</button>
+          <QB items={this.state.qb} onClick={this.toggleModal}/>
+          <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
+        </div>
+      )
+    } else if (this.state.view === 'home') {
+      return (
+        <div className='button-container'>
+          Select a position to rank:
+          <br/>
+          <button  className = 'big-button' name="WR" onClick={this.toggleView}>WR</button>
+          <button  className = 'big-button' name="QB" onClick={this.toggleView}>QB</button>
+          <button  className = 'big-button' name="RB" onClick={this.toggleView}>RB</button>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>
+        </div>
+      );
     }
-    return (
-    <div>
-      <img src='https://thumbs.gfycat.com/FaithfulDeafeningBullmastiff-small.gif'></img>
-    </div>
-    );
   }
 }
 
