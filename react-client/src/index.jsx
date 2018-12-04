@@ -16,6 +16,7 @@ class App extends React.Component {
       k: [],
       def: [],
       current: [],
+      search: '',
       isActive: false,
       isLoading: true,
       isModalOpen: false,
@@ -26,7 +27,6 @@ class App extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleView = this.toggleView.bind(this);
     this.setView = this.setView.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
@@ -99,7 +99,6 @@ class App extends React.Component {
   }
 
   toggleView(e) {
-
     if (e.target.name === "WR") { this.setState({ current: this.state.wr[0], view: 'WR' })};
     if (e.target.name === "QB") { this.setState({ current: this.state.qb[0], view: 'QB' })};
     if (e.target.name === "RB") { this.setState({ current: this.state.rb[0], view: 'RB' })};
@@ -125,6 +124,9 @@ class App extends React.Component {
   
   onInputChange(event) {
     let query = event.target.value;
+    this.setState({
+      search: query
+    })
     let results = this.state.current.filter((data)=>{
         return data.firstName.includes(query);
     });
@@ -133,7 +135,6 @@ class App extends React.Component {
     });
   }
 
-  
 
   render() {
     if (this.state.view !== 'home') {

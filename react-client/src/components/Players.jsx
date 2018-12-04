@@ -2,6 +2,7 @@ import React from 'react';
 import PlayerList from './PlayerList.jsx';
 
 const randomImage = () => {
+  let previousImage;
   let images = [
     "https://s3-us-west-1.amazonaws.com/fantasyash/wr3.png",
     "https://s3-us-west-1.amazonaws.com/fantasyash/football.jpg",
@@ -10,11 +11,15 @@ const randomImage = () => {
     "https://s3-us-west-1.amazonaws.com/fantasyash/qb2.png"
   ]
   let randomNum = Math.floor(Math.random() * 5);
-  return images[randomNum];
+  if (!previousImage) {
+    previousImage = images[randomNum]
+    return images[randomNum];
+  } else { return }
 };
 
 const Players = (props) => (
   <div>
+    {console.log(props)}
     <div className="input-container">
       <img className="player-img" src={randomImage()}/>
       <br/>

@@ -303,6 +303,9 @@ input {
     border: 0.25em solid #CCCCCC;
     padding-bottom: 4px;
     margin-right: 5px;
+    position: absolute;
+    top: -25px;
+    right: -900px
 }
 
 

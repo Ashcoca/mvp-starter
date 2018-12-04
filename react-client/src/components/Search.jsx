@@ -7,7 +7,7 @@ class Search extends React.Component {
       return (
         <div className="row">
           <div className="input-field">
-            <input className="hidden" type="text" placeholder="Search Players" onChange={this.props.onInputChange}></input>
+            <input type="text" placeholder="Search Players" onChange={this.props.onInputChange}></input>
           </div>
         </div>
       )
