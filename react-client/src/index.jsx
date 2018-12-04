@@ -143,8 +143,10 @@ class App extends React.Component {
           <button className="hover-button animated pulse">Log In</button>
           <button className="hover-button animated pulse">Save</button>
           <button className="hover-button animated pulse" onClick={this.setView}>Back</button>
-          <button className="button animated pulse">Search
-            <i class="fas fa-search"></i>
+          <button className="button animated pulse">
+          <span style={{fontSize:'3em'}}>
+            <i className="fas fa-search"></i>
+          </span>
             <Search items={this.state.current} onInputChange={this.onInputChange}/>
           </button>
         </div>        
