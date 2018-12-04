@@ -19,7 +19,6 @@ const randomImage = () => {
 
 const Players = (props) => (
   <div>
-    {console.log(props)}
     <div className="input-container">
       <img className="player-img" src={randomImage()}/>
       <br/>

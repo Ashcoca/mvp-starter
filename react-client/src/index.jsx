@@ -142,10 +142,11 @@ class App extends React.Component {
         <div className="hover-box animated slideInLeft">
           <button className="hover-button animated pulse">Log In</button>
           <button className="hover-button animated pulse">Save</button>
-          <button className="hover-button animated pulse">Search
+          <button className="hover-button animated pulse" onClick={this.setView}>Back</button>
+          <button className="button animated pulse">Search
+            <i class="fas fa-search"></i>
             <Search items={this.state.current} onInputChange={this.onInputChange}/>
           </button>
-          <button className="hover-button animated pulse" onClick={this.setView}>Back</button>
         </div>        
         <Players items={this.state.current} onClick={this.toggleModal}/>
         <Modal isOpen={this.state.isModalOpen} onClose={this.toggleModal} items={this.state.selectedItem}/>
