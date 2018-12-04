@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import Players from './components/Players.jsx';
 import Modal from './components/playerCard.jsx';
 import Search from './components/Search.jsx';
@@ -140,20 +141,38 @@ class App extends React.Component {
   logIn() {
     let username = prompt("Enter your username : ", "Username");
     let password = prompt("Enter your password :", "Password")
-    fetch('/login', {  
-      method: 'POST',  
-      body: JSON.stringify({
-      username: username,
-      password: password 
+    $.ajax({
+      url: "/login",
+      type: "POST",
+      headers: {  
+        'auth': '1234'  
+      }, 
+      data: {
+        user: username,
+        pass: password
+      },
+    }).done((data) => {
+      console.log(data)
     })
-  })
-  .then((data) => {  
-    console.log('Request success: ', data);  
-  })  
-  .catch((error) => {  
-    console.log('Request failure: ', error);  
-  });
-}
+  };
+
+
+  //   fetch('/login', {  
+  //     method: 'POST',  
+  //     headers: {  
+  //       'auth': '1234'  
+  //     }, 
+  //     body: JSON.stringify({
+  //     name: username,
+  //     pass: password 
+  //   })
+  // })
+  // .then((data) => {  
+  //   console.log('Request success: ', data);  
+  // })  
+  // .catch((error) => {  
+  //   console.log('Request failure: ', error);  
+  // });
 
 
   render() {

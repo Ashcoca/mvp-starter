@@ -70,12 +70,13 @@ app.get('/defense', function (req, res) {
 // });
 
 app.post('/login', function (req, res) {
+  console.log(req.body, "hello")
   var post = req.body;
-  if (post.user === 'ash' && post.password === 'ashvin') {
-    req.session.user_id = ashUserId;
+  if (post.user === 'ash' && post.pass === 'ashvin') {
+    req.session.user_id = req.body.user;
     res.redirect('/logged_in_test');
   } else {
-    res.send('Bad user/pass');
+    res.send('Bad username or password');
   }
 });
 
