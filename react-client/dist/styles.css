@@ -235,7 +235,8 @@ ol i {
     display: inline-block;
     background-color: #ffffff;
     border: 0.05em solid #ffffff;
-    box-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.05);
+    /* box-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.05); */
+    box-shadow: 0 0 5px #6A5D4F;
     box-sizing: border-box;
     font-family: 'Segoe UI','Roboto',sans-serif;
     font-weight: 400;
