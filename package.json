@@ -22,7 +22,7 @@
     "jquery": "^3.5.0",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
